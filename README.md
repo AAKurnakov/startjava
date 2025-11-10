@@ -1,3 +1,7 @@
+# [StartJava](https://topjava.ru/startjava) — курс на Java для начинающих
+
+## Используемые на курсе инструменты и технологии
+
 1. Java
 1. Git/GitHub
 1. Командная строка
