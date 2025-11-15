@@ -107,8 +107,8 @@ public class VariableNamesTheme {
         System.out.println("Счетчик = " + counter);
 
         // Путь до файла
-        String pathFile = "C:/ProgramFiles";
-        System.out.println("Путь до файла - " + pathFile);
+        String filePath = "C:/ProgramFiles";
+        System.out.println("Путь до файла - " + filePath);
 
         // Количество чисел в строке
         int countNumOfStr = 12;
