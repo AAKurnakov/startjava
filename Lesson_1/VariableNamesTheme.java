@@ -1,6 +1,6 @@
 public class VariableNamesTheme {
     public static void main(String[] args) {
-        // РАЗНЫЕ ПЕРЕМЕННЫЕ
+        System.out.println("Разные переменные");
 
         // Цифра
         int digit = 1;
@@ -91,8 +91,8 @@ public class VariableNamesTheme {
         System.out.println("Имя работника месяца - " + nameOfMonthEmployee);
 
         // Название электронной книги
-        String ebookName = "Чистый код";
-        System.out.println("Название электронной книги - " + ebookName); 
+        String ebookTitle = "Чистый код";
+        System.out.println("Название электронной книги - " + ebookTitle); 
 
         // Размер
         char size = 'M';
@@ -114,39 +114,49 @@ public class VariableNamesTheme {
         int countNumOfStr = 12;
         System.out.println("Количество чисел в строке = " + countNumOfStr);
 
-        // BOOLEAN-ПЕРЕМЕННЫЕ
+        System.out.println("\nBoolean-переменные");
 
         // Сотни равны?
-        boolean isHundreadsEqual;
+        boolean isEqualed = false;
+        System.out.println("Сотни равны? - " + isEqualed);
 
         // Компьютер включен?
-        boolean isComputerEnable;
+        boolean isEnabled = true;
+        System.out.println("Компьютер включен? - " + isEnabled);
 
         // Есть равные цифры?
-        boolean hasEqualDigits;
+        boolean hasEqualDigits = true;
+        System.out.println("Есть равные цифры? - " + hasEqualDigits);
 
         // Служба создана?
-        boolean isServiceCreated;
+        boolean isCreated = true;
+        System.out.println("Служба создана? - " + isCreated);
 
         // Файл пустой?
-        boolean isFileClear;
+        boolean isClear = false;
+        System.out.println("Файл пустой? - " + isClear);
 
         // Соединение активное?
-        boolean isConnectionActive;
+        boolean isActive = true;
+        System.out.println("Соединение активное? - " + isActive);
 
         // Новый?
-        boolean isNew;
+        boolean fresh = false;
+        System.out.println("Новый? - " + fresh);
 
         // Электронная почта действительная?
-        boolean isEmailValid;
+        boolean isValidEmail = true;
+        System.out.println("Электронная почта действительная? - " + isValidEmail);
 
         // Имеются уникальные строки?
-        boolean hasUniqueStr;
+        boolean hasUniqueStr = true;
+        System.out.println("Имеются уникальные строки? - " + hasUniqueStr);
 
-        // АББРЕВИАТУРЫ
+        System.out.println("\nАббревиатуры");
 
         // Старый universally unique identifier
-        String oldUniversallyUniqueId;
+        String oldUuid = "f8c3de3d-1fea-4d7c-a8b0-29f63c4c3454";
+        System.out.println("Старый универсальный уникальный идентификатор - " + oldUuid);
 
         // Производитель оперативной памяти
         String ramProducer = "Samsung";
@@ -161,12 +171,12 @@ public class VariableNamesTheme {
         System.out.println("Определение термина HTTP: " + httpTermDefinition);
 
         // Сокращенный uniform resource locator
-        String url = "https://github.com/";
-        System.out.println("url - " + url);
+        String shortUrl = "https://github.com/";
+        System.out.println("Сокращенный url - " + shortUrl);
 
         // Новый идентификатор клиента
-        int newClientId = 15;
-        System.out.println("Новый идентификатор клиента - " + newClientId);
+        int newCid = 15;
+        System.out.println("Новый идентификатор клиента - " + newCid);
 
         // Количество символов в american standard code for information interchange
         short asciiCharCount = 128;

@@ -9,7 +9,8 @@ public class VariablesTheme {
         final LocalTime localTimeStart = LocalTime.now();
 
         System.out.println("1. Вывод ASCII-графики");
-        System.out.println("                     /\\" + "\n" +
+        System.out.println(
+                "                     /\\" + "\n" +
                 "   J    a  v     v  /  \\   " + "\n" +
                 "   J   a a  v   v  /_( )\\  " + "\n" +
                 "J  J  aaaaa  V V  /      \\ " + "\n" +
@@ -25,22 +26,22 @@ public class VariablesTheme {
         System.out.println("\n2. Расчет стоимости товара");
         float penPrice = 105.5f;
         float bookPrice = 235.23f;
-        float sumWithoutDiscount = penPrice + bookPrice;
-        System.out.println("Стоимость товаров без скидки: " + sumWithoutDiscount);
-        float discountSum = sumWithoutDiscount * 11 / 100;
+        float basePrice = penPrice + bookPrice;
+        float discountSum = basePrice * 11 / 100;
+        float discountPrice = basePrice - discountSum;
+        System.out.println("Стоимость товаров без скидки: " + basePrice);
         System.out.println("Сумма скидки: " + discountSum);
-        float sumWithDiscount = sumWithoutDiscount - discountSum;
-        System.out.println("Стоимость товаров со скидкой: " + sumWithDiscount);
+        System.out.println("Стоимость товаров со скидкой: " + discountPrice);
 
-        BigDecimal penPriceBd = new BigDecimal("105.50");
-        BigDecimal bookPriceBd = new BigDecimal("235.23");
-        BigDecimal sumWithoutDiscountBd = penPriceBd.add(bookPriceBd);
-        System.out.println("Стоимость товаров без скидки(BDec): " + sumWithoutDiscountBd);
-        BigDecimal discountSumBd = sumWithoutDiscountBd.multiply(BigDecimal.valueOf(0.11));
+        BigDecimal penPriceBd = BigDecimal.valueOf(Double.valueOf("105.50"));
+        BigDecimal bookPriceBd = BigDecimal.valueOf(Double.valueOf("235.23"));
+        BigDecimal basePriceBd = penPriceBd.add(bookPriceBd);
+        BigDecimal discountSumBd = basePriceBd.multiply(BigDecimal.valueOf(Double.valueOf("0.11")));
+        BigDecimal discountPriceBd = basePriceBd.subtract(discountSumBd);
+        System.out.println("Стоимость товаров без скидки(BDec): " + basePriceBd);
         System.out.println("Сумма скидки(BDec): " + discountSumBd.setScale(2, RoundingMode.HALF_UP));
-        BigDecimal sumWithDiscountBd = sumWithoutDiscountBd.subtract(discountSumBd);
         System.out.println("Стоимость товаров со скидкой:(BDec): " + 
-                sumWithDiscountBd.setScale(2, RoundingMode.HALF_UP));
+                discountPriceBd.setScale(2, RoundingMode.HALF_UP));
 
         System.out.println("\n3. Перестановка значений ячеек в таблице");
         int cellA1 = 2;
@@ -58,8 +59,8 @@ public class VariablesTheme {
         System.out.println("Результат: A1 = " + cellA1 + ", B1 = " + cellB1);
         System.out.println("Метод: побитовый");
         int bitMask = cellA1 ^ cellB1;
-        cellA1 = cellA1 ^ bitMask;
-        cellB1 = cellB1 ^ bitMask;
+        cellA1 ^= bitMask;
+        cellB1 ^= bitMask;
         System.out.println("Результат: A1 = " + cellA1 + ", B1 = " + cellB1);
 
         System.out.println("\n4. Декодирование сообщения");
@@ -70,8 +71,7 @@ public class VariablesTheme {
         int code1077 = 1077;
         int code1090 = 1090;
         System.out.printf("%4d%5d%5d%5d%5d%5d%n", code1055, code1088, code1080, code1074, code1077, code1090);
-        System.out.printf("%2c%5c%5c%5c%5c%5c%n", (char) code1055, (char) code1088, (char) code1080, 
-                (char) code1074, (char) code1077, (char) code1090);
+        System.out.printf("%2c%5c%5c%5c%5c%5c%n", code1055, code1088, code1080, code1074, code1077, code1090);
 
         System.out.println("\n5. Анализ кода товара");
         int productCode = 123;
@@ -79,7 +79,7 @@ public class VariablesTheme {
         int remainder = productCode % 100;
         int subcategory = remainder / 10;
         int packageType = remainder % 10;
-        int controlSum = productCategory + subcategory + packageType;
+        int checkSum = productCategory + subcategory + packageType;
         int verificationCode = productCategory * subcategory * packageType;
         String textBlock = """
                 Код товара: %d
@@ -89,57 +89,57 @@ public class VariablesTheme {
                 Контрольная сумма = %d
                 Проверочный код = %d
                 """.formatted(productCode, productCategory, subcategory, 
-                packageType, controlSum, verificationCode);
+                packageType, checkSum, verificationCode);
         System.out.println(textBlock);
 
         System.out.println("6. Тестирование датчиков перед запуском ракеты");
-        byte maxByte = Byte.MAX_VALUE;
-        String textBlockTemplate = """
+        byte temperature = Byte.MAX_VALUE;
+        System.out.printf("""
                 [Температура, °C]:
                   Исходное: %d
                   +1: %d
-                  -1: %d
-                """.formatted(maxByte, ++maxByte, --maxByte);
-        System.out.println(textBlockTemplate);
-        int maxInt = Integer.MAX_VALUE;
-        textBlockTemplate = """
+                  -1: %d\n
+                """, temperature, ++temperature, --temperature);
+
+        int passedDistance = Integer.MAX_VALUE;
+        System.out.printf("""
                 [Пройденное расстояние, км]:
                   Исходное: %d
                   +1: %d
-                  -1: %d
-                """.formatted(maxInt, ++maxInt, --maxInt);
-        System.out.println(textBlockTemplate);
-        short maxShort = Short.MAX_VALUE;
-        textBlockTemplate = """
+                  -1: %d\n
+                """, passedDistance, ++passedDistance, --passedDistance);
+
+        short pressure = Short.MAX_VALUE;
+        System.out.printf("""
                 [Давление, Па]:
                   Исходное: %d
                   +1: %d
-                  -1: %d
-                """.formatted(maxShort, ++maxShort, --maxShort);
-        System.out.println(textBlockTemplate);
-        long maxLong = Long.MAX_VALUE;
-        textBlockTemplate = """
+                  -1: %d\n
+                """, pressure, ++pressure, --pressure);
+
+        long timeSinceStart = Long.MAX_VALUE;
+        System.out.printf("""
                 [Время с момента старта, с]:
                   Исходное: %d
                   +1: %d
-                  -1: %d
-                """.formatted(maxLong, ++maxLong, --maxLong);
-        System.out.println(textBlockTemplate);
-        char maxChar = Character.MAX_VALUE;
-        textBlockTemplate = """
+                  -1: %d\n
+                """, timeSinceStart, ++timeSinceStart, --timeSinceStart);
+
+        char systemStatus = Character.MAX_VALUE;
+        System.out.printf("""
                 [Код состояния системы]:
                   Исходное: %d
                   +1: %d
                   -1: %d
-                """.formatted((int) maxChar, (int) ++maxChar, (int) --maxChar);
-        System.out.print(textBlockTemplate);
+                """, (int) systemStatus, (int) ++systemStatus, (int) --systemStatus);
 
         System.out.println("\n7. Вывод параметров JVM и ОС");
-        Runtime runtime = Runtime.getRuntime();
-        double totalMemory = runtime.totalMemory() / (1024 * 1024);
-        double freeMemory = runtime.freeMemory() / (1024 * 1024);
+        int transToMb = 1024 * 1024;
+        Runtime rt = Runtime.getRuntime();
+        double totalMemory = rt.totalMemory() / transToMb;
+        double freeMemory = rt.freeMemory() / transToMb;
         double usedMemory = (totalMemory - freeMemory);
-        double maxMemory = runtime.maxMemory() / (1024 * 1024);
+        double maxMemory = rt.maxMemory() / transToMb;
         String systemDisk = System.getProperty("user.dir");
         String osVersion = System.getProperty("os.version");
         String javaVersion = System.getProperty("java.version");
@@ -156,14 +156,14 @@ public class VariablesTheme {
                   версия ОС: %s
                   версия Java: %s
                   сепаратор: %s
-                """, runtime.availableProcessors(), totalMemory, freeMemory, usedMemory, maxMemory, 
+                """, rt.availableProcessors(), totalMemory, freeMemory, usedMemory, maxMemory, 
                 systemDisk.charAt(0), osVersion, javaVersion, filePathSeparator);
 
-        System.out.println("\n8.Замер времени кода работы");
+        System.out.println("\n8.Замер времени работы кода");
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm:ss.SSS");
         LocalTime localTimeEnd = LocalTime.now();
         long endTime = System.nanoTime();
-        double workTime = (double) (endTime - startTime) / 1_000_000_000;
+        double workTime = (double) (endTime - startTime) / 1e9;
         System.out.printf("""
                 | Старт проверки | %s |
                 +----------------+--------------+
