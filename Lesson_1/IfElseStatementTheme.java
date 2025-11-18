@@ -66,7 +66,7 @@ public class IfElseStatementTheme {
 
         System.out.println("\n5. Инвентаризация");
         short snId = 212;
-        short pcId = 116;
+        short pcId = 216;
         boolean isHundreadsEqual = (snId / 100 == pcId / 100);
         boolean isTensEqual = ((snId % 100) / 10 == (pcId % 100) / 10);
         boolean isOnesEqual = (snId % 10 == pcId % 10);
@@ -76,20 +76,20 @@ public class IfElseStatementTheme {
         String textBlock = "";
         if (isHundreadsEqual && isTensEqual && isOnesEqual) {
             textBlock = """
-                    %d компьютер на %d-м этаже в кабинете %d
-                    """.formatted(computerNum, floorNum, officeNum);
+                    [№%d]: %d компьютер на %d-м этаже в кабинете %d
+                    """.formatted(pcId, computerNum, floorNum, officeNum);
         } else if (isHundreadsEqual && isTensEqual) {
             textBlock = """
-                    %d компьютер на %d-м этаже
-                    """.formatted(computerNum, floorNum);
+                    [№%d]: %d компьютер на %d-м этаже
+                    """.formatted(pcId, computerNum, floorNum);
         } else if (isHundreadsEqual && isOnesEqual) {
             textBlock = """
-                    %d компьютер в кабинете %d
-                    """.formatted(computerNum, officeNum);
+                    [№%d]: компьютер в кабинете %d
+                    """.formatted(pcId, computerNum, officeNum);
         } else if (isTensEqual && isOnesEqual) {
             textBlock = """
-                    компьютер на %d-м этаже в кабинете %d
-                    """.formatted(floorNum, officeNum);
+                    [№%d]: компьютер на %d-м этаже в кабинете %d
+                    """.formatted(pcId, floorNum, officeNum);
         } else {
             textBlock = "оборудование не идентифицировано";
         }
