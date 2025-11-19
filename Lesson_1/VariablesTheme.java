@@ -33,10 +33,10 @@ public class VariablesTheme {
         System.out.println("Сумма скидки: " + discountSum);
         System.out.println("Стоимость товаров со скидкой: " + discountPrice);
 
-        BigDecimal penPriceBd = new BigDecimal("105.50");
-        BigDecimal bookPriceBd = new BigDecimal("235.23");
+        BigDecimal penPriceBd = BigDecimal.valueOf(Double.valueOf("105.50"));
+        BigDecimal bookPriceBd = BigDecimal.valueOf(Double.valueOf("235.23"));
         BigDecimal basePriceBd = penPriceBd.add(bookPriceBd);
-        BigDecimal discountSumBd = basePriceBd.multiply(new BigDecimal("0.11"));
+        BigDecimal discountSumBd = basePriceBd.multiply(BigDecimal.valueOf(Double.valueOf("0.11")));
         BigDecimal discountPriceBd = basePriceBd.subtract(discountSumBd);
         System.out.println("Стоимость товаров без скидки(BDec): " + basePriceBd);
         System.out.println("Сумма скидки(BDec): " + discountSumBd.setScale(2, RoundingMode.HALF_UP));
