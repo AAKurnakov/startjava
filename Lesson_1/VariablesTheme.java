@@ -26,17 +26,19 @@ public class VariablesTheme {
         System.out.println("\n2. Расчет стоимости товара");
         float penPrice = 105.5f;
         float bookPrice = 235.23f;
+        float discount = 0.11f;
         float basePrice = penPrice + bookPrice;
-        float discountSum = basePrice * 11 / 100;
+        float discountSum = basePrice * discount;
         float discountPrice = basePrice - discountSum;
         System.out.println("Стоимость товаров без скидки: " + basePrice);
         System.out.println("Сумма скидки: " + discountSum);
         System.out.println("Стоимость товаров со скидкой: " + discountPrice);
-
-        BigDecimal penPriceBd = BigDecimal.valueOf(Double.valueOf("105.50"));
-        BigDecimal bookPriceBd = BigDecimal.valueOf(Double.valueOf("235.23"));
+        
+        BigDecimal penPriceBd = BigDecimal.valueOf(105.50);
+        BigDecimal bookPriceBd = BigDecimal.valueOf(235.23);
+        BigDecimal discountBd = BigDecimal.valueOf(0.11);
         BigDecimal basePriceBd = penPriceBd.add(bookPriceBd);
-        BigDecimal discountSumBd = basePriceBd.multiply(BigDecimal.valueOf(Double.valueOf("0.11")));
+        BigDecimal discountSumBd = basePriceBd.multiply(discountBd);
         BigDecimal discountPriceBd = basePriceBd.subtract(discountSumBd);
         System.out.println("Стоимость товаров без скидки(BDec): " + basePriceBd);
         System.out.println("Сумма скидки(BDec): " + discountSumBd.setScale(2, RoundingMode.HALF_UP));
@@ -44,8 +46,8 @@ public class VariablesTheme {
                 discountPriceBd.setScale(2, RoundingMode.HALF_UP));
 
         System.out.println("\n3. Перестановка значений ячеек в таблице");
-        int cellA1 = 2;
-        int cellB1 = 5;
+        int cellA1 = 5;
+        int cellB1 = 2;
         System.out.println("До перестановки: A1 = " + cellA1 + ", B1 = " + cellB1);
         System.out.println("Метод: с использованием третьей переменной");
         int temp = cellA1;
@@ -53,14 +55,14 @@ public class VariablesTheme {
         cellB1 = temp;
         System.out.println("Результат: A1 = " + cellA1 + ", B1 = " + cellB1);
         System.out.println("Метод: арифметических операций");
-        int difference = cellB1 - cellA1;
-        cellA1 += difference;
-        cellB1 -= difference;
+        cellA1 += cellB1;
+        cellB1 = cellA1 - cellB1;
+        cellA1 -= cellB1;
         System.out.println("Результат: A1 = " + cellA1 + ", B1 = " + cellB1);
         System.out.println("Метод: побитовый");
-        int bitMask = cellA1 ^ cellB1;
-        cellA1 ^= bitMask;
-        cellB1 ^= bitMask;
+        cellA1 ^= cellB1;
+        cellB1 ^= cellA1;
+        cellA1 ^= cellB1;
         System.out.println("Результат: A1 = " + cellA1 + ", B1 = " + cellB1);
 
         System.out.println("\n4. Декодирование сообщения");
@@ -79,7 +81,7 @@ public class VariablesTheme {
         int remainder = productCode % 100;
         int subcategory = remainder / 10;
         int packageType = remainder % 10;
-        int checkSum = productCategory + subcategory + packageType;
+        int checksum = productCategory + subcategory + packageType;
         int verificationCode = productCategory * subcategory * packageType;
         String textBlock = """
                 Код товара: %d
@@ -89,7 +91,7 @@ public class VariablesTheme {
                 Контрольная сумма = %d
                 Проверочный код = %d
                 """.formatted(productCode, productCategory, subcategory, 
-                packageType, checkSum, verificationCode);
+                packageType, checksum, verificationCode);
         System.out.println(textBlock);
 
         System.out.println("6. Тестирование датчиков перед запуском ракеты");
@@ -134,12 +136,12 @@ public class VariablesTheme {
                 """, (int) systemStatus, (int) ++systemStatus, (int) --systemStatus);
 
         System.out.println("\n7. Вывод параметров JVM и ОС");
-        int transToMb = 1024 * 1024;
+        int bytesToMb = 1024 * 1024;
         Runtime rt = Runtime.getRuntime();
-        double totalMemory = rt.totalMemory() / transToMb;
-        double freeMemory = rt.freeMemory() / transToMb;
+        double totalMemory = rt.totalMemory() / bytesToMb;
+        double freeMemory = rt.freeMemory() / bytesToMb;
         double usedMemory = (totalMemory - freeMemory);
-        double maxMemory = rt.maxMemory() / transToMb;
+        double maxMemory = rt.maxMemory() / bytesToMb;
         String systemDisk = System.getProperty("user.dir");
         String osVersion = System.getProperty("os.version");
         String javaVersion = System.getProperty("java.version");

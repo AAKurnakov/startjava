@@ -117,32 +117,32 @@ public class VariableNamesTheme {
         System.out.println("\nBoolean-переменные");
 
         // Сотни равны?
-        boolean isEqualed = false;
-        System.out.println("Сотни равны? - " + isEqualed);
+        boolean isEqualedHundreads = false;
+        System.out.println("Сотни равны? - " + isEqualedHundreads);
 
         // Компьютер включен?
-        boolean isEnabled = true;
-        System.out.println("Компьютер включен? - " + isEnabled);
+        boolean isEnabledComputer = true;
+        System.out.println("Компьютер включен? - " + isEnabledComputer);
 
         // Есть равные цифры?
         boolean hasEqualDigits = true;
         System.out.println("Есть равные цифры? - " + hasEqualDigits);
 
         // Служба создана?
-        boolean isCreated = true;
-        System.out.println("Служба создана? - " + isCreated);
+        boolean isCreatedService = true;
+        System.out.println("Служба создана? - " + isCreatedService);
 
         // Файл пустой?
-        boolean isClear = false;
-        System.out.println("Файл пустой? - " + isClear);
+        boolean isEmptyFile = false;
+        System.out.println("Файл пустой? - " + isEmptyFile);
 
         // Соединение активное?
-        boolean isActive = true;
-        System.out.println("Соединение активное? - " + isActive);
+        boolean isActiveConnect = true;
+        System.out.println("Соединение активное? - " + isActiveConnect);
 
         // Новый?
-        boolean fresh = false;
-        System.out.println("Новый? - " + fresh);
+        boolean isNew = false;
+        System.out.println("Новый? - " + isNew);
 
         // Электронная почта действительная?
         boolean isValidEmail = true;
