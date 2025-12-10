@@ -10,10 +10,10 @@ public class VariablesTheme {
 
         System.out.println("1. Вывод ASCII-графики");
         System.out.println(
-                "                     /\\" + "\n" +
-                "   J    a  v     v  /  \\   " + "\n" +
-                "   J   a a  v   v  /_( )\\  " + "\n" +
-                "J  J  aaaaa  V V  /      \\ " + "\n" +
+                "                     /\\\n" +
+                "   J    a  v     v  /  \\\n" +
+                "   J   a a  v   v  /_( )\\\n" +
+                "J  J  aaaaa  V V  /      \\\n" +
                 " JJ  a     a  V  /___/\\___\\\n");
         System.out.print("""
                          /\\            

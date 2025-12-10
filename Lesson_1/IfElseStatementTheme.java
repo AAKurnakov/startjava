@@ -28,8 +28,7 @@ public class IfElseStatementTheme {
         int stepsToday = 12000;
         int stepsYesterday = 11295;
         int stepsSum = stepsToday + stepsYesterday;
-        double avgSteps = stepsSum / 2.0;
-        System.out.printf("Количество шагов за вчера и сегодня - %d\n", stepsSum);
+        System.out.printf("Количество шагов за вчера и сегодня - %d%n", stepsSum);
         if (stepsToday > stepsYesterday) {
             System.out.println("Сегодня шагов больше");
         } else if (stepsToday < stepsYesterday) {
@@ -37,66 +36,83 @@ public class IfElseStatementTheme {
         } else {
             System.out.println("Одинаковое количество шагов");
         }
-        System.out.printf("Среднее значение шагов - %.2f\n", avgSteps);
+        double avgSteps = stepsSum / 2.0;
+        System.out.printf("Среднее значение шагов - %.2f%n", avgSteps);
 
         System.out.println("\n3. Проверка количества гостей");
         int guestCount = 14;
-        boolean isEvenCount = (guestCount % 2 == 0);
         if (guestCount == 0) {
             System.out.println("Пока никто не записался на мероприятие!");
         } else if (guestCount < 0) {
             System.out.println("Число гостей не может быть отрицательным");
-        } else if (isEvenCount) {
-            System.out.printf("Записалось %d гостей. Можно формировать пары для конкурсов.\n", guestCount);
+        } else if (guestCount % 2 == 0) {
+            System.out.printf("Записалось %d гостей. Можно формировать пары для конкурсов.%n", guestCount);
         } else {
-            System.out.printf("Записалось %d гостей. Нужны индивидуальные задания.\n", guestCount);
+            System.out.printf("Записалось %d гостей. Нужны индивидуальные задания.%n", guestCount);
         }
 
         System.out.println("\n4. Определение первого символа никнейма");
         String name = "Elschamaly";
-        String startStr = "Имя %s начинается с ";
+        System.out.printf("Имя %s начинается с ", name);
         int firstCharCode = name.charAt(0);
         if ((firstCharCode >= 'a' && firstCharCode <= 'z') || 
                 (firstCharCode >= 'а' && firstCharCode <= 'я')) {
-            System.out.printf(startStr + "маленькой буквы %c\n", name, firstCharCode);
+            System.out.printf("маленькой буквы %c%n", firstCharCode);
         } else if ((firstCharCode >= 'A' && firstCharCode <= 'Z') || 
                 (firstCharCode >= 'А' && firstCharCode <= 'Я')) {
-            System.out.printf(startStr + "большой буквы %c\n", name, firstCharCode);
+            System.out.printf("большой буквы %c%n", firstCharCode);
         } else if (firstCharCode >= '0' && firstCharCode <= '9') {
-            System.out.printf(startStr + "цифры %c\n", name, firstCharCode);
+            System.out.printf("цифры %c%n", firstCharCode);
         } else {
-            System.out.printf(startStr + "символа %c\n", name, firstCharCode);
+            System.out.printf("символа %c%n", firstCharCode);
         }
 
         char firstChar = name.charAt(0);
+        System.out.printf("Имя %s начинается с ", name);
         if (Character.isLowerCase(firstChar)) {
-            System.out.printf(startStr + "маленькой буквы %c\n", name, firstCharCode);
+            System.out.printf("маленькой буквы %c%n", firstCharCode);
         } else if (Character.isUpperCase(firstChar)) {
-            System.out.printf(startStr + "большой буквы %c\n", name, firstCharCode);
+            System.out.printf("большой буквы %c%n", firstCharCode);
         } else if (Character.isDigit(firstChar)) {
-            System.out.printf(startStr + "цифры %c\n", name, firstCharCode);
+            System.out.printf("цифры %c%n", firstCharCode);
         } else {
-            System.out.printf(startStr + "символа %c\n", name, firstCharCode);
+            System.out.printf("символа %c%n", firstCharCode);
         }
 
         System.out.println("\n5. Инвентаризация");
-        short snId = 212;
-        short pcId = 216;
-        if (snId == pcId) {
-            System.out.printf("[%d]: Компьютер на 3-м этаже в кабинете 2\n", pcId);
-        } else {
-            System.out.printf("[%d]: оборудование не идентифицировано\n", pcId);
-        }
+        short snId = 123;
+        short pcId = 361;
         String strSnId = String.valueOf(snId);
         String strPcId = String.valueOf(pcId);
-        String textBlock = """
-                Частичное совпадение: [%s%s%s]
-                """.formatted(strSnId.charAt(0) == strPcId.charAt(0) ? strPcId.charAt(0) : "_",
-                        strSnId.charAt(1) == strPcId.charAt(1) ? strPcId.charAt(1) : "_",
-                        strSnId.charAt(2) == strPcId.charAt(2) ? strPcId.charAt(2) : "_");
-        System.out.println(textBlock);
+        boolean isExistsHundreadsInBase = (strPcId.charAt(0) == strSnId.charAt(0) || 
+                strPcId.charAt(0) == strSnId.charAt(1) || 
+                strPcId.charAt(0) == strSnId.charAt(2));
 
-        System.out.println("6. Подсчет начисленных банком процентов");
+        boolean isExistsTensInBase = strPcId.charAt(1) == strSnId.charAt(0) || 
+                strPcId.charAt(1) == strSnId.charAt(1) || 
+                strPcId.charAt(1) == strSnId.charAt(2);
+
+        boolean isExistsOnesInBase = strPcId.charAt(2) == strSnId.charAt(0) || 
+                strPcId.charAt(2) == strSnId.charAt(1) || 
+                strPcId.charAt(2) == strSnId.charAt(2);
+
+        if (snId == pcId) {
+            System.out.printf("[%d]: Компьютер на 3-м этаже в кабинете 2%n", pcId);
+        } else if (isExistsHundreadsInBase || isExistsTensInBase || isExistsOnesInBase) {
+            String textBlock = """
+                    Нет полного совпадения: 
+                    База данных: [№%s]
+                    Фактический: [№%s%s%s]
+                    """.formatted(snId,
+                            isExistsHundreadsInBase ? strPcId.charAt(0) : "_",
+                            isExistsTensInBase ? strPcId.charAt(1) : "_",
+                            isExistsOnesInBase ? strPcId.charAt(2) : "_");
+            System.out.printf(textBlock);
+        } else {
+            System.out.printf("[%d]: оборудование не идентифицировано%n", pcId);
+        }
+
+        System.out.println("\n6. Подсчет начисленных банком процентов");
         float deposit = 321123.79f;
         float depositRate = (deposit < 1e5) ? 0.05f 
                 : (deposit >= 1e5 && deposit < 3e5) ? 0.07f : 0.1f;
@@ -123,26 +139,22 @@ public class IfElseStatementTheme {
 
         System.out.println("\n7. Определение оценки по предметам");
         double histPercent = 0.59;
-        int histGrade;
+        int histGrade = 3;
         if (histPercent <= 0.6) {
             histGrade = 2;
         } else if (histPercent > 0.91) {
             histGrade = 5;
         } else if (histPercent > 0.73) {
             histGrade = 4;
-        } else {
-            histGrade = 3;
         }
         double csPercent = 0.92;
-        int csGrade;
+        int csGrade = 3;
         if (csPercent <= 0.6) {
             csGrade = 2;
         } else if (csPercent > 0.91) {
             csGrade = 5;
         } else if (csPercent > 0.73) {
             csGrade = 4;
-        } else {
-            csGrade = 3;
         }
         double avgPercent = (histPercent + csPercent) / 2 * 100;
         double avgGrade = ((double) histGrade + csGrade) / 2;
@@ -154,10 +166,11 @@ public class IfElseStatementTheme {
                 """, histGrade, csGrade, avgGrade, avgPercent);
 
         System.out.println("\n8. Расчет годовой прибыли");
-        BigDecimal yearSale = BigDecimal.valueOf(13025.233).multiply(BigDecimal.valueOf(12));
-        BigDecimal yearRent = BigDecimal.valueOf(5123.018).multiply(BigDecimal.valueOf(12));
-        BigDecimal yearCostPrice = BigDecimal.valueOf(9001.729).multiply(BigDecimal.valueOf(12));
-        BigDecimal yearProfit = yearSale.subtract(yearRent.add(yearCostPrice));
+        BigDecimal monthSale = BigDecimal.valueOf(13025.233);
+        BigDecimal monthRent = BigDecimal.valueOf(5123.018);
+        BigDecimal monthCostPrice = BigDecimal.valueOf(9001.729);
+        BigDecimal yearProfit = monthSale.subtract(monthRent.add(monthCostPrice))
+                .multiply(BigDecimal.valueOf(12));
         if (yearProfit.compareTo(BigDecimal.ZERO) > 0) {
             System.out.printf("Прибыль за год: +%.2f", yearProfit);
         } else {
