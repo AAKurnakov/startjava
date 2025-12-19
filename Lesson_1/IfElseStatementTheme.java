@@ -81,32 +81,21 @@ public class IfElseStatementTheme {
 
         System.out.println("\n5. Инвентаризация");
         short snId = 123;
-        short pcId = 361;
-        String strSnId = String.valueOf(snId);
-        String strPcId = String.valueOf(pcId);
-        boolean isExistsHundreadsInBase = (strPcId.charAt(0) == strSnId.charAt(0) || 
-                strPcId.charAt(0) == strSnId.charAt(1) || 
-                strPcId.charAt(0) == strSnId.charAt(2));
-
-        boolean isExistsTensInBase = strPcId.charAt(1) == strSnId.charAt(0) || 
-                strPcId.charAt(1) == strSnId.charAt(1) || 
-                strPcId.charAt(1) == strSnId.charAt(2);
-
-        boolean isExistsOnesInBase = strPcId.charAt(2) == strSnId.charAt(0) || 
-                strPcId.charAt(2) == strSnId.charAt(1) || 
-                strPcId.charAt(2) == strSnId.charAt(2);
-
+        short pcId = 143;
+        boolean isEqualOnes = (snId % 10 == pcId % 10);
+        boolean isEqualTens = ((snId / 10) % 10 == (pcId / 10) % 10);
+        boolean isEqualHundreds = (snId / 100 == pcId / 100);
         if (snId == pcId) {
             System.out.printf("[%d]: Компьютер на 3-м этаже в кабинете 2%n", pcId);
-        } else if (isExistsHundreadsInBase || isExistsTensInBase || isExistsOnesInBase) {
+        } else if (isEqualOnes || isEqualTens || isEqualHundreds) {
             String textBlock = """
                     Нет полного совпадения: 
                     База данных: [№%s]
                     Фактический: [№%s%s%s]
                     """.formatted(snId,
-                            isExistsHundreadsInBase ? strPcId.charAt(0) : "_",
-                            isExistsTensInBase ? strPcId.charAt(1) : "_",
-                            isExistsOnesInBase ? strPcId.charAt(2) : "_");
+                            isEqualHundreds ? pcId / 100 : "_",
+                            isEqualTens ? (pcId / 10) % 10 : "_",
+                            isEqualOnes ? pcId % 10 : "_");
             System.out.printf(textBlock);
         } else {
             System.out.printf("[%d]: оборудование не идентифицировано%n", pcId);
