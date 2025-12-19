@@ -1,7 +1,7 @@
 public class Calculator {
     public static void main(String[] args) {
         int firstNum = 12;
-        int secondNum = 5;
+        int secondNum = 3;
         // Проверка, что числа натуральные
         if (firstNum <= 0 || secondNum <= 0) {
             System.out.println("Числа должно быть натуральными!");
@@ -29,7 +29,6 @@ public class Calculator {
                 result *= firstNum;
             }
         }
-        System.out.printf("%d %s %d = %s", firstNum, sign, secondNum, 
-                String.valueOf(result).replaceAll("\\.0*$", ""));
+        System.out.printf("%d %s %d = %g", firstNum, sign, secondNum, result);
     }
 }

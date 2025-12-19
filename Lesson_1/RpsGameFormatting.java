@@ -1,11 +1,12 @@
 package ru.topjava.lesson1;
+
 import java.util.Random;
 
 public class RpsGameFormatting {
     public static void main(String[] args) throws InterruptedException {
         // Игра Камень-Ножницы-Бумага
-        String rock ="✊";
-        String scissors= "✌\uFE0F";
+        String rock = "✊";
+        String scissors = "✌";
         String paper = "✋";
 
         // Ход первого игрока
@@ -38,13 +39,13 @@ public class RpsGameFormatting {
         } else if (position2 > 33) {
             sign2 = scissors;
         }
-        System.out.println("Ход " + secondPlayerName +":");
+        System.out.println("Ход " + secondPlayerName + ":");
         for (int i = 0; i < 5; i++) {
             System.out.print(rock + "\r");
             Thread.sleep(100);
             System.out.print(scissors + "\r");
             Thread.sleep(100);
-            System.out.print (paper + "\r");
+            System.out.print(paper + "\r");
             Thread.sleep(100);
         }
         System.out.println(sign2);

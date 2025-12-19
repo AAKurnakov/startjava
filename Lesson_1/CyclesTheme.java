@@ -4,8 +4,6 @@ public class CyclesTheme {
     public static void main(String[] args) {
         System.out.println("1. Вывод ASCII-символов");
         System.out.printf("%-10s%-12s%-12s%n", "DECIMAL", "CHARACTER", "DESCRIPTION");
-        char character;
-        String description;
         for (int i = 33; i <= 122; i++) {
             if ((i < 48 && i % 2 != 0) || (i >= 97 && i % 2 == 0)) {
                 System.out.printf("  %-12d%-13c%-21s%n", i, (char) i, Character.getName(i));
@@ -15,26 +13,26 @@ public class CyclesTheme {
         System.out.println("\n2. Вывод геометрических фигур");
         int circumflexCount = 1;
         for (int i = 5; i > 0; i--) {
-            System.out.printf("%s ", "----------");
+            System.out.print("---------- ");
             for (int j = 0; j < i; j++) {
                 System.out.print("*");
             }
             System.out.print(" ");
             for (int j = 0; j < circumflexCount; j++) {
-                System.out.printf("%s", "^");
+                System.out.print("^");
             }
             System.out.println();
             circumflexCount += 2;
         }
 
         System.out.println("\n3. Вывод таблицы умножения");
-        System.out.printf("%3s", '|');
+        System.out.printf("%3s", "|");
         for (int i = 2; i < 10; i++) {
             System.out.printf("%3d", i);
         }
         System.out.println("\n--+------------------------");
         for (int i = 2; i < 10; i++) {
-            System.out.printf("%d%2s", i, '|');
+            System.out.printf("%d%2s", i, "|");
             for (int j = 2; j < 10; j++) {
                 System.out.printf("%3d", i * j);
             }
@@ -65,14 +63,16 @@ public class CyclesTheme {
         int firstNum = 10;
         int secondNum = 5;
         int thirdNum = -1;
-        int max = 0;
-        int min = 0;
-        if (firstNum > secondNum) {
-            max = (firstNum > thirdNum) ? firstNum : thirdNum;
-            min = (secondNum < thirdNum) ? secondNum : thirdNum;
+        int max = firstNum;
+        int min = secondNum;
+        if (firstNum < secondNum) {
+            max = secondNum;
+            min = firstNum;
+        } 
+        if (thirdNum > max) {
+            max = thirdNum;
         } else {
-            max = (secondNum > thirdNum) ? secondNum : thirdNum;
-            min = (firstNum < thirdNum) ? firstNum : thirdNum;
+            min = thirdNum;
         }
         for (int i = --max; i > min; i--) {
             System.out.printf("%d ", i);
@@ -91,36 +91,30 @@ public class CyclesTheme {
             reversedNumber = reversedNumber * 10 + digit;
             currNumber /= 10;
         }
-        if (reversedNumber == initialNumber) {
-            System.out.printf("%d - палиндром с ", reversedNumber);
-        } else {
-            System.out.printf("%d - не палиндром с ", reversedNumber);
-        }
-        if (countOfTwo % 2 == 0) {
-            System.out.printf("четным (%d) количеством двоек", countOfTwo);
-        } else {
-            System.out.printf("нечетным (%d) количеством двоек", countOfTwo);
-        }
+        System.out.printf("%d - %3$sпалиндром с%4$sчетным (%d) количеством двоек", reversedNumber, countOfTwo,
+                (reversedNumber == initialNumber) ? "" : "не ", 
+                (countOfTwo % 2 == 0) ? " " : " не");
 
         System.out.println("\n\n7. Проверка счастливого числа");
         initialNumber = 101002;
-        int tempNumber = initialNumber;
+        currNumber = initialNumber;
         int firstHalfNum = initialNumber / 1000;
         int secondHalfNum = initialNumber % 1000;
         int firstHalfSum = 0;
         int secondHalfSum = 0;
         int countOfDigits = 1;
-        while (tempNumber != 0) {
+        while (currNumber > 0) {
             if (countOfDigits < 3) {
-                firstHalfSum += tempNumber % 10;
+                firstHalfSum += currNumber % 10;
             } else {
-                secondHalfSum += tempNumber % 10;
+                secondHalfSum += currNumber % 10;
             }
-            tempNumber /= 10;
+            currNumber /= 10;
             countOfDigits++;
         }
-        System.out.printf("%d - счастливое число%nСумма цифр %03d = %d%nСумма цифр %03d = %d\n", 
-                initialNumber, secondHalfNum, secondHalfSum, firstHalfNum, firstHalfSum);
+        System.out.printf("%d -%6$s счастливое число%nСумма цифр %03d = %d%nСумма цифр %03d = %d\n", 
+                initialNumber, secondHalfNum, secondHalfSum, firstHalfNum, firstHalfSum,
+                firstHalfSum == secondHalfSum ? "" : " не");
 
         System.out.println("\n8. Простой генератор пароля");
         Random random = new Random();
@@ -130,21 +124,18 @@ public class CyclesTheme {
         boolean hasUpperLetters = false;
         boolean hasDigits = false;
         boolean hasSpecialSymbols = false;
-        int asciiCode;
         for (int i = 0; i < passwordLength; i++) {
-            asciiCode = random.nextInt(33, 123);
-            if (asciiCode >= 33 && asciiCode < 48) {
+            char password = (char) random.nextInt(33, 127);
+            if (!Character.isLetterOrDigit(password)) {
                 hasSpecialSymbols = true;
-            } else if (asciiCode >= 48 && asciiCode < 58) {
+            } else if (Character.isDigit(password)) {
                 hasDigits = true;
-            } else if (asciiCode >= 65 && asciiCode < 91) {
+            } else if (Character.isLetter(password) && Character.isUpperCase(password)) {
                 hasUpperLetters = true;
-            } else if (asciiCode >= 97 && asciiCode < 123) {
-                hasLowerLetters = true;
             } else {
-                continue;
-            }
-            System.out.print((char) asciiCode);
+                hasLowerLetters = true;
+            } 
+            System.out.print(password);
         }
         System.out.printf("\nНадежность: %s", 
                 (passwordLength >= 8 && hasLowerLetters && hasUpperLetters && hasSpecialSymbols) ? "Надежный"
