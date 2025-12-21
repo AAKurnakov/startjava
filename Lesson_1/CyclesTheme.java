@@ -71,7 +71,7 @@ public class CyclesTheme {
         } 
         if (thirdNum > max) {
             max = thirdNum;
-        } else {
+        } else if (thirdNum < min) {
             min = thirdNum;
         }
         for (int i = --max; i > min; i--) {
@@ -130,7 +130,7 @@ public class CyclesTheme {
                 hasSpecialSymbols = true;
             } else if (Character.isDigit(password)) {
                 hasDigits = true;
-            } else if (Character.isLetter(password) && Character.isUpperCase(password)) {
+            } else if (Character.isUpperCase(password)) {
                 hasUpperLetters = true;
             } else {
                 hasLowerLetters = true;
