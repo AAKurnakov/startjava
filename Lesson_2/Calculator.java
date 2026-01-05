@@ -1,54 +1,55 @@
 public class Calculator {
+    private int firstNum;
+    private char sign;
+    private int secondNum;
+
+    public void setFirstNum(int firstNum) {
+        this.firstNum = firstNum;
+    }
+
+    public void setSign(char sign) {
+        if (sign != '+' && sign != '-' && sign != '*' && sign != '/' && sign != '%' && sign != '^') {
+            throw new IllegalArgumentException("Ошибка: операция %c не поддерживается!%n".formatted(sign));
+        } 
+        this.sign = sign;
+    }
+
+    public void setSecondNum(int secondNum) {
+        this.secondNum = secondNum;
+    }
+
+    public double calculate() {
+        return calculate(this.firstNum, this.sign, this.secondNum);
+    }
+
     public double calculate(int firstNum, char sign, int secondNum) {
-        double result = 0;
         switch (sign) {
             case '+':
-                result = firstNum + secondNum;
-                break;
+                return firstNum + secondNum;
             case '-':
-                result = firstNum - secondNum;
-                break;
+                return firstNum - secondNum;
             case '*':
-                result = firstNum * secondNum;
-                break;
+                return firstNum * secondNum;
             case '%':
-                result = firstNum % secondNum;
-                break;
+                return firstNum % secondNum;
             case '/':
-                result = (double) firstNum / secondNum;
-                break;
-            case '^':
-                if (secondNum == 0) {
-                    result = 1;
-                    break;
-                } else {
-                    result = firstNum;
-                    for (int i = 0; i < secondNum - 1; i++) {
-                        result *= firstNum;
-                    }
-                    if (secondNum > 0) {
-                        return result;
-                    } else {
-                        return 1 / result;
-                    }
+                if (this.secondNum == 0) {
+                    throw new IllegalArgumentException("Деление на ноль запрещено");
                 }
-        }
-        return result;
-    }
-
-    public boolean isValidSign(char sign) {
-        if (sign != '+' && sign != '-' && sign != '*' && sign != '/' && sign != '%' && sign != '^') {
-            return false;
-        } else {
-            return true;
+                return (double) firstNum / secondNum;
+            case '^':
+                return (secondNum == 0) ? 1 : calcPow(firstNum, secondNum);
+            default:
+                // никогда не выполнится, но без этого требует возврат значения
+                throw new IllegalArgumentException("Операция не поддерживается");
         }
     }
 
-    public boolean isNonZero(int number) {
-        if (number != 0) {
-            return true;
-        } else {
-            return false;
+    private double calcPow(int base, int exponent) {
+        double result = base;
+        for (int i = 0; i < secondNum - 1; i++) {
+            result *= base;
         }
+        return (exponent > 0) ? result : 1 / result;
     }
 }
