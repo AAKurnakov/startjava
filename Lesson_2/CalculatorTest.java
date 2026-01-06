@@ -20,7 +20,7 @@ public class CalculatorTest {
 
             double result = calculator.calculate();
             printResult(result);
-        } while (askToContinue());
+        } while (isContinue());
         scanner.close();
     }
 
@@ -34,7 +34,7 @@ public class CalculatorTest {
         return num;
     }
 
-    private static boolean askToContinue() {
+    private static boolean isContinue() {
         while (true) {
             System.out.print("\nХотите продолжить игру? [yes/no]: ");
             String answer = scanner.nextLine().trim().toLowerCase();

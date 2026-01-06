@@ -16,7 +16,7 @@ public class GuessNumberTest {
         boolean isContinueGame = true;
         while (isContinueGame) {
             game.start();
-            isContinueGame = askToContinue(scanner);
+            isContinueGame = isContinue(scanner);
             if (isContinueGame) {
                 game.restart();
             }
@@ -24,7 +24,7 @@ public class GuessNumberTest {
         scanner.close();
     }
 
-    private static boolean askToContinue(Scanner scanner) {
+    private static boolean isContinue(Scanner scanner) {
         while (true) {
             System.out.print("\nХотите продолжить игру? [yes/no]: ");
             String answer = scanner.nextLine().trim().toLowerCase();
