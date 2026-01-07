@@ -1,30 +1,26 @@
 import java.util.Scanner;
 
 public class CalculatorTest {
-    private static Scanner scanner = new Scanner(System.in);
-
     public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
         Calculator calculator = new Calculator();
         do {
             System.out.println("Введите первое число: ");
-            int firstNum = readValidNum();
-            calculator.setFirstNum(firstNum);
+            calculator.setFirstNum(inputNum(scanner));
 
             System.out.println("Введите знак операции (+, -, *, /, ^, %): ");
-            char sign = scanner.nextLine().charAt(0);
-            calculator.setSign(sign);
+            calculator.setSign(scanner.nextLine().charAt(0));
 
             System.out.println("Введите второе число: ");
-            int secondNum = readValidNum();
-            calculator.setSecondNum(secondNum);
+            calculator.setSecondNum(inputNum(scanner));
 
             double result = calculator.calculate();
             printResult(result);
-        } while (isContinue());
+        } while (isContinue(scanner));
         scanner.close();
     }
 
-    private static int readValidNum() {
+    private static int inputNum(Scanner scanner) {
         while (!scanner.hasNextInt()) {
             System.out.print("Ошибка! Введите целое число: ");
             scanner.next();
@@ -34,7 +30,15 @@ public class CalculatorTest {
         return num;
     }
 
-    private static boolean isContinue() {
+    private static void printResult(double result) {
+        if (result == (long) result) {
+            System.out.printf("Результат: %d%n", (long) result);
+        } else {
+            System.out.printf("Результат: %.3f%n", result);
+        }
+    }
+
+    private static boolean isContinue(Scanner scanner) {
         while (true) {
             System.out.print("\nХотите продолжить игру? [yes/no]: ");
             String answer = scanner.nextLine().trim().toLowerCase();
@@ -48,14 +52,6 @@ public class CalculatorTest {
             }
             
             System.out.println("Ошибка: введите только \"yes\" или \"no\"!");
-        }
-    }
-
-    private static void printResult(double result) {
-        if (result == (long) result) {
-            System.out.printf("Результат: %d%n", (long) result);
-        } else {
-            System.out.printf("Результат: %.3f%n", result);
         }
     }
 }

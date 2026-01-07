@@ -22,7 +22,7 @@ public class GuessNumber {
         while (!isGameFinished) {
             attempt++;
             System.out.printf("\nХод %d. %s, введите число: ", attempt, currentPlayer.getName());
-            int guess = readValidGuess();
+            int guess = inputGuess();
             if (guess == targetNumber) {
                 System.out.println(currentPlayer.getName() + " угадал число!");
                 isGameFinished = true;
@@ -49,7 +49,7 @@ public class GuessNumber {
         max = 100;
     }
 
-    private int readValidGuess() {
+    private int inputGuess() {
         while (!scanner.hasNextInt()) {
             System.out.print("Ошибка! Введите целое число: ");
             scanner.next();

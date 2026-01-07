@@ -11,11 +11,4 @@ public class Player {
     public String getName() {
         return name;
     }
-
-    public void setName() {
-        if (name.trim().isEmpty()) {
-            throw new IllegalArgumentException("Имя игрока не может быть пустым");
-        }
-        this.name = name.trim();
-    }
 }

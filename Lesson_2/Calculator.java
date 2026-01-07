@@ -19,10 +19,10 @@ public class Calculator {
     }
 
     public double calculate() {
-        return calculate(this.firstNum, this.sign, this.secondNum);
+        return calculate(firstNum, sign, secondNum);
     }
 
-    public double calculate(int firstNum, char sign, int secondNum) {
+    private double calculate(int firstNum, char sign, int secondNum) {
         switch (sign) {
             case '+':
                 return firstNum + secondNum;
@@ -38,16 +38,16 @@ public class Calculator {
                 }
                 return (double) firstNum / secondNum;
             case '^':
-                return (secondNum == 0) ? 1 : calcPow(firstNum, secondNum);
+                return (secondNum == 0) ? 1 : pow(firstNum, secondNum);
             default:
                 // никогда не выполнится, но без этого требует возврат значения
                 throw new IllegalArgumentException("Операция не поддерживается");
         }
     }
 
-    private double calcPow(int base, int exponent) {
+    private double pow(int base, int exponent) {
         double result = base;
-        for (int i = 0; i < secondNum - 1; i++) {
+        for (int i = 0; i < Math.abs(exponent) - 1; i++) {
             result *= base;
         }
         return (exponent > 0) ? result : 1 / result;
