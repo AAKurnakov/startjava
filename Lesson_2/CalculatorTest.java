@@ -6,15 +6,16 @@ public class CalculatorTest {
         Calculator calculator = new Calculator();
         do {
             System.out.println("Введите первое число: ");
-            calculator.setFirstNum(inputNum(scanner));
+            int firstNum = inputNum(scanner);
 
             System.out.println("Введите знак операции (+, -, *, /, ^, %): ");
-            calculator.setSign(scanner.nextLine().charAt(0));
+            char sign = scanner.nextLine().charAt(0);
+            calculator.setSign(sign);
 
             System.out.println("Введите второе число: ");
-            calculator.setSecondNum(inputNum(scanner));
+            int secondNum = inputNum(scanner);
 
-            double result = calculator.calculate();
+            double result = calculator.calculate(firstNum, sign, secondNum);
             printResult(result);
         } while (isContinue(scanner));
         scanner.close();
@@ -34,7 +35,7 @@ public class CalculatorTest {
         if (result == (long) result) {
             System.out.printf("Результат: %d%n", (long) result);
         } else {
-            System.out.printf("Результат: %.3f%n", result);
+            System.out.printf("Результат: %.5f%n", result);
         }
     }
 

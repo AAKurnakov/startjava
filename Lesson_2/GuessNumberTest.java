@@ -13,31 +13,7 @@ public class GuessNumberTest {
         Player player2 = new Player(name2);
 
         GuessNumber game = new GuessNumber(player1, player2, scanner);
-        boolean isContinueGame = true;
-        while (isContinueGame) {
-            game.start();
-            isContinueGame = isContinue(scanner);
-            if (isContinueGame) {
-                game.restart();
-            }
-        }
+        game.start();
         scanner.close();
-    }
-
-    private static boolean isContinue(Scanner scanner) {
-        while (true) {
-            System.out.print("\nХотите продолжить игру? [yes/no]: ");
-            String answer = scanner.nextLine().trim().toLowerCase();
-            
-            if (answer.equals("yes")) {
-                return true;
-            }
-            
-            if (answer.equals("no")) {
-                return false;
-            }
-            
-            System.out.println("Ошибка: введите только \"yes\" или \"no\"!");
-        }
     }
 }

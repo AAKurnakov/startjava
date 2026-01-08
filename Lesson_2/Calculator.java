@@ -1,28 +1,14 @@
 public class Calculator {
-    private int firstNum;
     private char sign;
-    private int secondNum;
-
-    public void setFirstNum(int firstNum) {
-        this.firstNum = firstNum;
-    }
 
     public void setSign(char sign) {
-        if (sign != '+' && sign != '-' && sign != '*' && sign != '/' && sign != '%' && sign != '^') {
+        if ("+-*/%^".indexOf(sign) == -1) {
             throw new IllegalArgumentException("Ошибка: операция %c не поддерживается!%n".formatted(sign));
         } 
         this.sign = sign;
     }
 
-    public void setSecondNum(int secondNum) {
-        this.secondNum = secondNum;
-    }
-
-    public double calculate() {
-        return calculate(firstNum, sign, secondNum);
-    }
-
-    private double calculate(int firstNum, char sign, int secondNum) {
+    public double calculate(int firstNum, char sign, int secondNum) {
         switch (sign) {
             case '+':
                 return firstNum + secondNum;
@@ -33,7 +19,7 @@ public class Calculator {
             case '%':
                 return firstNum % secondNum;
             case '/':
-                if (this.secondNum == 0) {
+                if (secondNum == 0) {
                     throw new IllegalArgumentException("Деление на ноль запрещено");
                 }
                 return (double) firstNum / secondNum;
