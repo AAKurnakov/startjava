@@ -9,8 +9,7 @@ public class CalculatorTest {
             int firstNum = inputNum(scanner);
 
             System.out.println("Введите знак операции (+, -, *, /, ^, %): ");
-            char sign = scanner.nextLine().charAt(0);
-            calculator.setSign(sign);
+            calculator.setSign(scanner.nextLine().charAt(0));
 
             System.out.println("Введите второе число: ");
             int secondNum = inputNum(scanner);
