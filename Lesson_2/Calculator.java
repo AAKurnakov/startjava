@@ -8,7 +8,7 @@ public class Calculator {
         this.sign = sign;
     }
 
-    public double calculate(int firstNum, char sign, int secondNum) {
+    public double calculate(int firstNum, int secondNum) {
         switch (sign) {
             case '+':
                 return firstNum + secondNum;
