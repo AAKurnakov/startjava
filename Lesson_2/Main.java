@@ -1,42 +1,40 @@
 public class Main {
     public static void main(String[] args) {
         System.out.println("НЕ BOOLEAN-МЕТОДЫ ");
-        NonBooleanMethods nonBoolean = new NonBooleanMethods();
-        nonBoolean.getLongestWord();
-        nonBoolean.chooseMenuOption();
-        nonBoolean.calcAverageGrade();
-        nonBoolean.getUniqueWordCount();
-        nonBoolean.showErrorMessage();
-        nonBoolean.syncWithCloudData();
-        nonBoolean.restoreFromBackupByDate();
-        nonBoolean.pauseAriaMp3Download();
-        nonBoolean.resetToFactorySettings();
-        nonBoolean.saveToUsbDriveByPath();
-        nonBoolean.convertCelsiusToFahrenheit();
-        nonBoolean.evaluateExpression();
-        nonBoolean.findNeedForSpeedWinner();
-        nonBoolean.searchBookByAuthor();
+        runNonBoolean();
 
         System.out.println("\nBOOLEAN-МЕТОДЫ");
-        boolean result;
-        BooleanMethods booleanMethods = new BooleanMethods();
-        result = booleanMethods.isContinueProgram();
-        System.out.print(" - " + result + "\n");
-        result = booleanMethods.hasUniqueDigit();
-        System.out.print(" - " + result + "\n");
-        result = booleanMethods.isLetterInput();
-        System.out.print(" - " + result + "\n");
-        result = booleanMethods.hasEqualsDigits();
-        System.out.print(" - " + result + "\n");
-        result = booleanMethods.hasRemainingLivesInMarioGame();
-        System.out.print(" - " + result + "\n");
-        result = booleanMethods.isEmptyOrBlank();
-        System.out.print(" - " + result + "\n");
-        result = booleanMethods.isEvenDiceRoll();
-        System.out.print(" - " + result + "\n");
-        result = booleanMethods.isValidFilePathBySsd();
-        System.out.print(" - " + result + "\n");
-        result = booleanMethods.isExistFilePath();
-        System.out.print(" - " + result + "\n");
+        runBoolean();
+    }
+
+    private static void runNonBoolean() {
+        NonBooleanMethods nonBm = new NonBooleanMethods();
+        nonBm.findLongestWord();
+        nonBm.chooseMenuOption();
+        nonBm.calcAverageGrade();
+        nonBm.countUniqueWords();
+        nonBm.showErrorMessage();
+        nonBm.syncWithCloud();
+        nonBm.restoreFromBackup();
+        nonBm.pauseDownload();
+        nonBm.resetToFactorySettings();
+        nonBm.writeFile();
+        nonBm.convertCelsiusToFahrenheit();
+        nonBm.evaluateExpression();
+        nonBm.findGameWinner();
+        nonBm.searchBookByAuthor();
+    }
+
+    private static void runBoolean() {
+        BooleanMethods bm = new BooleanMethods();
+        System.out.println(bm.isContinueProgram());
+        System.out.println(bm.hasUniqueDigit());
+        System.out.println(bm.isLetterInput());
+        System.out.println(bm.hasEqualsDigits());
+        System.out.println(bm.hasRemainingLives());
+        System.out.println(bm.isBlank());
+        System.out.println(bm.isEvenDiceRoll());
+        System.out.println(bm.isValidPath());
+        System.out.println(bm.isExistFile());
     }
 }

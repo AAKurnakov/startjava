@@ -10,7 +10,7 @@ public class Jaeger {
     }
 
     public Jaeger(String name, double height, double weight, int speed, int armor, int strength) {
-        if (name.trim().isBlank()) {
+        if (name.isBlank()) {
             throw new IllegalArgumentException("Имя робота не может быть пустым");
         }
         this.name = name.trim();
@@ -22,7 +22,7 @@ public class Jaeger {
     }
 
     public void setName(String name) {
-        if (name.trim().isEmpty()) {
+        if (name.isBlank()) {
             throw new IllegalArgumentException("Имя робота не может быть пустым");
         }
         this.name = name;

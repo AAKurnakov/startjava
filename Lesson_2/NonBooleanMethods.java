@@ -1,5 +1,5 @@
 public class NonBooleanMethods {
-    public void getLongestWord() {
+    public void findLongestWord() {
         System.out.printf("%s() -> найти самое длинное слово в предложении из книги по Java%n",
                 Methods.getCurrentMethodName());
     }
@@ -14,7 +14,7 @@ public class NonBooleanMethods {
                 Methods.getCurrentMethodName());
     }
 
-    public void getUniqueWordCount() {
+    public void countUniqueWords() {
         System.out.printf("%s() -> посчитать уникальное количество слов в \"Война и Мир\"%n",
                 Methods.getCurrentMethodName());
     }
@@ -24,17 +24,17 @@ public class NonBooleanMethods {
                 Methods.getCurrentMethodName());
     }
 
-    public void syncWithCloudData() {
+    public void syncWithCloud() {
         System.out.printf("%s() -> синхронизировать данные с облачным хранилищем%n",
                 Methods.getCurrentMethodName());
     }
 
-    public void restoreFromBackupByDate() {
+    public void restoreFromBackup() {
         System.out.printf("%s() -> восстановить данные из резервной копии от 11.03.2024%n",
                 Methods.getCurrentMethodName());
     }
 
-    public void pauseAriaMp3Download() {
+    public void pauseDownload() {
         System.out.printf("%s() -> приостановить загрузку mp3-файла группы \"Ария\"%n",
                 Methods.getCurrentMethodName());
     }
@@ -44,7 +44,7 @@ public class NonBooleanMethods {
                 Methods.getCurrentMethodName());
     }
 
-    public void saveToUsbDriveByPath() {
+    public void writeFile() {
         System.out.printf("%s() -> записать содержимое в файл по указанному пути на флешку%n",
                 Methods.getCurrentMethodName());
     }
@@ -59,7 +59,7 @@ public class NonBooleanMethods {
                 Methods.getCurrentMethodName());
     }
 
-    public void findNeedForSpeedWinner() {
+    public void findGameWinner() {
         System.out.printf("%s() -> выявить победителя среди гонщиков игры \"Need For Speed\"%n",
                 Methods.getCurrentMethodName());
     }
