@@ -6,15 +6,15 @@ public class CalculatorTest {
         Calculator calculator = new Calculator();
         do {
             System.out.println("Введите первое число: ");
-            int firstNum = inputNum(scanner);
+            calculator.setFirstNum(inputNum(scanner));
 
             System.out.println("Введите знак операции (+, -, *, /, ^, %): ");
             calculator.setSign(scanner.nextLine().charAt(0));
 
             System.out.println("Введите второе число: ");
-            int secondNum = inputNum(scanner);
+            calculator.setSecondNum(inputNum(scanner));
 
-            double result = calculator.calculate(firstNum, secondNum);
+            double result = calculator.calculate();
             printResult(result);
         } while (isContinue(scanner));
         scanner.close();

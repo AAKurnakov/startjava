@@ -1,5 +1,11 @@
 public class Calculator {
+    private int firstNum;
     private char sign;
+    private int secondNum;
+
+    public void setFirstNum(int firstNum) {
+        this.firstNum = firstNum;
+    }
 
     public void setSign(char sign) {
         if ("+-*/%^".indexOf(sign) == -1) {
@@ -8,7 +14,11 @@ public class Calculator {
         this.sign = sign;
     }
 
-    public double calculate(int firstNum, int secondNum) {
+    public void setSecondNum(int secondNum) {
+        this.secondNum = secondNum;
+    }
+
+    public double calculate() {
         switch (sign) {
             case '+':
                 return firstNum + secondNum;
