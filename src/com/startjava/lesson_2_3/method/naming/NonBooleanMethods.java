@@ -1,3 +1,5 @@
+package com.startjava.lesson_2_3.method.naming;
+
 public class NonBooleanMethods {
     public void findLongestWord() {
         System.out.printf("%s() -> найти самое длинное слово в предложении из книги по Java%n",

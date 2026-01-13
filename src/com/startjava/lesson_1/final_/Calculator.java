@@ -1,3 +1,5 @@
+package com.startjava.lesson_1.final_;
+
 public class Calculator {
     public static void main(String[] args) {
         int firstNum = 12;
@@ -7,7 +9,7 @@ public class Calculator {
             System.out.println("Числа должно быть натуральными!");
             return;
         }
-        char sign = '/';
+        char sign = '^';
         if (sign != '+' && sign != '-' && sign != '*' && sign != '/' && sign != '%' && sign != '^') {
             System.out.println("Введите правильный знак('+' '-' '*' '/' '%' '^')");
             return;

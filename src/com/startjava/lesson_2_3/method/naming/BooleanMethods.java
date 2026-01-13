@@ -1,3 +1,5 @@
+package com.startjava.lesson_2_3.method.naming;
+
 public class BooleanMethods {
     public boolean isContinueProgram() {
         System.out.printf("%s() -> программа выполняется далее или завершается? - ",
